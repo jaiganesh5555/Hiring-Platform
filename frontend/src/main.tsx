@@ -3,9 +3,13 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
 import { initApp } from './utils/init'
-import { worker } from './mocks/browser';
-worker.start();
+
 async function startApp() {
+  // Only start MSW in development
+  if (import.meta.env.DEV) {
+    const { worker } = await import('./mocks/browser');
+    await worker.start();
+  }
   try {
   await initApp();
     
