@@ -128,7 +128,7 @@ export const candidatesAPI = {
     const response = await fetch(`/api/candidates${queryString ? `?${queryString}` : ''}`);
     const data = await handleResponse<{ candidates: any[]; total: number }>(response);
     
-    const mappedCandidates = data.candidates.map(c => ({
+    const mappedCandidates = data.candidates.map((c: any) => ({
       ...c,
       currentStage: c.stage || c.currentStage,
       statusHistory: [] as any[],
@@ -146,14 +146,14 @@ export const candidatesAPI = {
 
   const rawNotes = await db.notes.where('candidateId').equals(id).toArray();
   console.debug('[candidatesAPI.getById] candidateId=', id, 'rawNotesCount=', rawNotes.length);
-    const notes = rawNotes.map(n => ({
+    const notes = rawNotes.map((n: any) => ({
       ...n,
       createdAt: new Date(n.createdAt)
     }));
 
   const rawTimeline = await db.timeline.where('candidateId').equals(id).sortBy('timestamp');
   console.debug('[candidatesAPI.getById] candidateId=', id, 'rawTimelineCount=', rawTimeline.length, 'rawTimelineSample=', rawTimeline.slice(0,3));
-    const statusHistory = rawTimeline.map(ev => {
+    const statusHistory = rawTimeline.map((ev: any) => {
       const stage = (ev.metadata && (ev.metadata.toStage || ev.metadata.stage)) || candidate.stage;
       return {
         id: ev.id,
@@ -212,7 +212,7 @@ export const candidatesAPI = {
       return { candidateId: id, timeline: [{ id: 'applied', stage: candidate.stage, timestamp: candidate.appliedAt }] };
     }
 
-    const timeline = rawTimeline.map(ev => ({
+    const timeline = rawTimeline.map((ev: any) => ({
       id: ev.id,
       stage: ev.metadata?.toStage || ev.metadata?.stage || ev.description || null,
       timestamp: ev.timestamp,

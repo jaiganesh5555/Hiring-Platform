@@ -178,7 +178,7 @@ const candidatesHandlers = [
       return HttpResponse.json({ candidateId: id, timeline: [{ id: 'applied', stage: candidate.stage, timestamp: candidate.appliedAt }] });
     }
 
-    const mapped = events.map(ev => ({
+    const mapped = events.map((ev: any) => ({
       id: ev.id,
       stage: ev.metadata?.toStage || ev.metadata?.stage || ev.description || null,
       timestamp: ev.timestamp,
