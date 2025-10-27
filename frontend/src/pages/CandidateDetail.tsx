@@ -127,6 +127,35 @@ const CandidateDetailPage = () => {
               {(() => {
                 
                 const rawHistory = Array.isArray(candidate.statusHistory) ? candidate.statusHistory : [];
+                
+                // If no history exists, create a default entry with current stage
+                if (rawHistory.length === 0) {
+                  return (
+                    <div className="relative flex gap-4">
+                      <div className="relative flex-shrink-0">
+                        <div className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-sm bg-gradient-to-br from-gray-800 to-black text-white shadow-lg">
+                          1
+                        </div>
+                      </div>
+                      <div className="flex-1 pt-1">
+                        <div className="rounded-xl p-4 bg-gradient-to-r from-gray-50 to-gray-100 border-2 border-gray-300">
+                          <div className="flex items-center justify-between mb-2">
+                            <h4 className="font-bold capitalize text-lg text-gray-900">
+                              {candidate.currentStage}
+                            </h4>
+                            <span className="text-xs text-gray-500 font-medium">
+                              {format(candidate.appliedAt, 'MMM d, HH:mm')}
+                            </span>
+                          </div>
+                          <p className="text-sm text-gray-600">
+                            Initial application
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+                
                 const history = rawHistory.map((s, idx) => ({
                   id: s.id || `s-${idx}`,
                   stage: s.stage || candidate.currentStage,

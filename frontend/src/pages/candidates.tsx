@@ -190,7 +190,7 @@ const CandidatesPage = () => {
                 }}
               >
                 <div className="h-full border-b border-gray-400 hover:bg-gray-200 cursor-pointer
-                  transition-all duration-100 hover:scale-10 hover:shadow-xl hover:z-10 relative"
+                  transition-all duration-100 hover:shadow-md relative"
                   onClick={() => handleCandidateClick(candidate)}
                 >
                   <div className="p-3 flex justify-between items-center">
