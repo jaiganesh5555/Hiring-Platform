@@ -5,11 +5,9 @@ import App from './App.tsx'
 import { initApp } from './utils/init'
 
 async function startApp() {
-  // Only start MSW in development
-  if (import.meta.env.DEV) {
-    const { worker } = await import('./mocks/browser');
-    await worker.start();
-  }
+  // Start MSW in both development and production for now
+  const { worker } = await import('./mocks/browser');
+  await worker.start();
   try {
   await initApp();
     
