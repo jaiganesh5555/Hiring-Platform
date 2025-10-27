@@ -13,6 +13,7 @@
     "@tanstack/react-virtual": "^3.13.12",
     "autoprefixer": "^10.4.21",
     "date-fns": "^4.1.0",
+    "dexie": "^4.2.1",
     "msw": "^2.11.6",
     "postcss": "^8.5.6",
     "react": "^19.1.1",
@@ -20,6 +21,7 @@
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^19.1.1",
     "react-hot-toast": "^2.6.0",
+    "react-parallax-tilt": "^1.7.311",
     "react-router-dom": "^7.9.4",
     "tailwindcss": "^4.1.16",
     "uuid": "^13.0.0"
@@ -45,4 +47,3 @@
     ]
   }
 }
-
